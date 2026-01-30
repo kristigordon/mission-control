@@ -98,7 +98,7 @@ export function KanbanBoard() {
   if (loading) {
     return (
       <div className="flex items-center justify-center min-h-[400px]">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-gray-900"></div>
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
       </div>
     )
   }
@@ -107,13 +107,13 @@ export function KanbanBoard() {
     <div className="space-y-6">
       {/* Filters */}
       <div className="flex items-center gap-2 flex-wrap">
-        <span className="text-sm text-gray-600 font-medium">Filter:</span>
+        <span className="text-sm text-muted-foreground font-medium">Filter:</span>
         <button
           onClick={() => setFilterTag('all')}
           className={`px-3 py-1.5 rounded-full text-sm font-medium transition-colors ${
             filterTag === 'all'
-              ? 'bg-gray-900 text-white'
-              : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+              ? 'bg-primary text-primary-foreground'
+              : 'bg-muted text-muted-foreground hover:bg-accent hover:text-accent-foreground'
           }`}
         >
           All
@@ -124,8 +124,8 @@ export function KanbanBoard() {
             onClick={() => setFilterTag(tag)}
             className={`px-3 py-1.5 rounded-full text-sm font-medium transition-colors ${
               filterTag === tag
-                ? 'bg-gray-900 text-white'
-                : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                ? 'bg-primary text-primary-foreground'
+                : 'bg-muted text-muted-foreground hover:bg-accent hover:text-accent-foreground'
             }`}
           >
             {tag}
@@ -135,27 +135,27 @@ export function KanbanBoard() {
 
       {/* Stats */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-        <div className="bg-white rounded-lg p-4 border border-gray-200">
-          <div className="text-2xl font-bold text-gray-900">{tasks.length}</div>
-          <div className="text-sm text-gray-500">Total Tasks</div>
+        <div className="bg-card rounded-lg p-4 border border-border">
+          <div className="text-2xl font-bold text-card-foreground">{tasks.length}</div>
+          <div className="text-sm text-muted-foreground">Total Tasks</div>
         </div>
-        <div className="bg-white rounded-lg p-4 border border-gray-200">
-          <div className="text-2xl font-bold text-blue-600">
+        <div className="bg-card rounded-lg p-4 border border-border">
+          <div className="text-2xl font-bold text-blue-500">
             {tasks.filter((t) => t.status === 'in_progress').length}
           </div>
-          <div className="text-sm text-gray-500">In Progress</div>
+          <div className="text-sm text-muted-foreground">In Progress</div>
         </div>
-        <div className="bg-white rounded-lg p-4 border border-gray-200">
-          <div className="text-2xl font-bold text-green-600">
+        <div className="bg-card rounded-lg p-4 border border-border">
+          <div className="text-2xl font-bold text-green-500">
             {tasks.filter((t) => t.status === 'done').length}
           </div>
-          <div className="text-sm text-gray-500">Completed</div>
+          <div className="text-sm text-muted-foreground">Completed</div>
         </div>
-        <div className="bg-white rounded-lg p-4 border border-gray-200">
-          <div className="text-2xl font-bold text-yellow-600">
+        <div className="bg-card rounded-lg p-4 border border-border">
+          <div className="text-2xl font-bold text-yellow-500">
             {tasks.filter((t) => t.status === 'todo' || t.status === 'backlog').length}
           </div>
-          <div className="text-sm text-gray-500">Pending</div>
+          <div className="text-sm text-muted-foreground">Pending</div>
         </div>
       </div>
 

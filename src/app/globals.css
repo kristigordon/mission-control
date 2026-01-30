@@ -1,7 +1,6 @@
 @import "tailwindcss";
 
 :root {
-  /* Default to dark mode colors */
   --background: #0a0a0a;
   --foreground: #ededed;
 }
@@ -9,18 +8,25 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-card: #171717;
+  --color-card-foreground: #ededed;
+  --color-popover: #171717;
+  --color-popover-foreground: #ededed;
+  --color-primary: #ededed;
+  --color-primary-foreground: #171717;
+  --color-secondary: #262626;
+  --color-secondary-foreground: #ededed;
+  --color-muted: #262626;
+  --color-muted-foreground: #a3a3a3;
+  --color-accent: #262626;
+  --color-accent-foreground: #ededed;
+  --color-destructive: #ef4444;
+  --color-destructive-foreground: #fafafa;
+  --color-border: #262626;
+  --color-input: #262626;
+  --color-ring: #d4d4d4;
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-}
-
-/* Optional: Allow light mode override if needed later via class or media query */
-@media (prefers-color-scheme: light) {
-  /* Commented out to force dark mode for now
-  :root {
-    --background: #ffffff;
-    --foreground: #171717;
-  }
-  */
 }
 
 body {

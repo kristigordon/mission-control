@@ -2,12 +2,13 @@
 
 import { Task, TaskTag } from '@/lib/supabase'
 
+// Updated for dark mode readability
 const tagColors: Record<TaskTag, string> = {
-  'Socials': 'bg-purple-100 text-purple-800 border-purple-200',
-  'SkillStamp': 'bg-blue-100 text-blue-800 border-blue-200',
-  'Digital Doula': 'bg-pink-100 text-pink-800 border-pink-200',
-  'Copy Cat': 'bg-orange-100 text-orange-800 border-orange-200',
-  'Helix Health': 'bg-green-100 text-green-800 border-green-200',
+  'Socials': 'bg-purple-950 text-purple-200 border-purple-800',
+  'SkillStamp': 'bg-blue-950 text-blue-200 border-blue-800',
+  'Digital Doula': 'bg-pink-950 text-pink-200 border-pink-800',
+  'Copy Cat': 'bg-orange-950 text-orange-200 border-orange-800',
+  'Helix Health': 'bg-green-950 text-green-200 border-green-800',
 }
 
 interface TaskCardProps {
@@ -20,21 +21,25 @@ export function TaskCard({ task, onDragStart }: TaskCardProps) {
     <div
       draggable
       onDragStart={(e) => onDragStart(e, task)}
-      className="bg-white rounded-lg shadow-sm border border-gray-200 p-4 cursor-grab active:cursor-grabbing hover:shadow-md transition-shadow"
+      className="bg-card rounded-lg shadow-sm border border-border p-4 cursor-grab active:cursor-grabbing hover:border-primary/50 transition-colors"
     >
       <div className="flex items-start justify-between gap-2 mb-2">
-        <h3 className="font-medium text-gray-900 text-sm leading-tight">{task.title}</h3>
+        <h3 className="font-medium text-card-foreground text-sm leading-tight">{task.title}</h3>
       </div>
       {task.description && (
-        <p className="text-gray-600 text-xs mb-3 line-clamp-2">{task.description}</p>
+        <p className="text-muted-foreground text-xs mb-3 line-clamp-2">{task.description}</p>
       )}
       <div className="flex items-center justify-between">
-        <span className={`text-xs px-2 py-1 rounded-full border ${tagColors[task.tag]}`}>
+        <span className={`text-xs px-2 py-1 rounded-full border ${tagColors[task.tag] || 'bg-secondary text-secondary-foreground border-border'}`}>
           {task.tag}
         </span>
-        <span className="text-xs text-gray-400">
-          {new Date(task.created_at).toLocaleDateString()}
-        </span>
+        {task.completed_at ? (
+            <span className="text-xs text-green-500 font-medium">Done</span>
+        ) : (
+             <span className="text-xs text-muted-foreground">
+               {new Date(task.created_at).toLocaleDateString()}
+             </span>
+        )}
       </div>
     </div>
   )
