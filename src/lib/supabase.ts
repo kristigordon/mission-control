@@ -7,7 +7,7 @@ export const supabase = supabaseUrl && supabaseAnonKey
   ? createClient(supabaseUrl, supabaseAnonKey)
   : null as unknown as ReturnType<typeof createClient>
 
-export type TaskStatus = 'backlog' | 'todo' | 'in_progress' | 'done'
+export type TaskStatus = 'todo' | 'in_progress' | 'review' | 'done'
 export type TaskTag = 'Socials' | 'SkillStamp' | 'Digital Doula' | 'Copy Cat' | 'Helix Health'
 
 export interface Task {

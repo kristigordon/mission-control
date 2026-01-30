@@ -4,7 +4,7 @@ import { useState, useEffect, useCallback } from 'react'
 import { supabase, Task, TaskStatus, TaskTag } from '@/lib/supabase'
 import { Column } from './Column'
 
-const statuses: TaskStatus[] = ['backlog', 'todo', 'in_progress', 'done']
+const statuses: TaskStatus[] = ['todo', 'in_progress', 'review', 'done']
 const tags: TaskTag[] = ['Socials', 'SkillStamp', 'Digital Doula', 'Copy Cat', 'Helix Health']
 
 export function KanbanBoard() {
@@ -146,16 +146,16 @@ export function KanbanBoard() {
           <div className="text-sm text-muted-foreground">In Progress</div>
         </div>
         <div className="bg-card rounded-lg p-4 border border-border">
+          <div className="text-2xl font-bold text-yellow-500">
+            {tasks.filter((t) => t.status === 'review').length}
+          </div>
+          <div className="text-sm text-muted-foreground">Review</div>
+        </div>
+        <div className="bg-card rounded-lg p-4 border border-border">
           <div className="text-2xl font-bold text-green-500">
             {tasks.filter((t) => t.status === 'done').length}
           </div>
           <div className="text-sm text-muted-foreground">Completed</div>
-        </div>
-        <div className="bg-card rounded-lg p-4 border border-border">
-          <div className="text-2xl font-bold text-yellow-500">
-            {tasks.filter((t) => t.status === 'todo' || t.status === 'backlog').length}
-          </div>
-          <div className="text-sm text-muted-foreground">Pending</div>
         </div>
       </div>
 

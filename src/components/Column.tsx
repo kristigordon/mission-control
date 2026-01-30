@@ -4,17 +4,17 @@ import { Task, TaskStatus } from '@/lib/supabase'
 import { TaskCard } from './TaskCard'
 
 const statusLabels: Record<TaskStatus, string> = {
-  backlog: 'Backlog',
   todo: 'To Do',
   in_progress: 'In Progress',
+  review: 'Review',
   done: 'Done',
 }
 
 const statusColors: Record<TaskStatus, string> = {
-  backlog: 'bg-secondary/30 border-secondary',
-  todo: 'bg-yellow-950/20 border-yellow-900/50',
-  in_progress: 'bg-blue-950/20 border-blue-900/50',
-  done: 'bg-green-950/20 border-green-900/50',
+  todo: 'bg-zinc-900/50 border-zinc-800',
+  in_progress: 'bg-zinc-900/50 border-blue-900/30',
+  review: 'bg-zinc-900/50 border-yellow-900/30',
+  done: 'bg-zinc-900/50 border-green-900/30',
 }
 
 interface ColumnProps {
